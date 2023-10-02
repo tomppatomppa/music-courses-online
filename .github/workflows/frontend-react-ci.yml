@@ -18,6 +18,8 @@ jobs:
         with:
           node-version: 14
 
+      - name: Go to folder
+        run: cd frontend
       - name: Install Dependencies
         run: npm ci
 
