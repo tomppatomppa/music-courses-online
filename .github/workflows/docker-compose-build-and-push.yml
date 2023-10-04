@@ -10,9 +10,9 @@
 name: Build And Publish Docker image
 
 on:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - release
   release:
     types: [published]
 
