@@ -3,14 +3,14 @@ FROM node:16-alpine as client
 
 WORKDIR /usr/src/app
 
+
+ENV VITE_BACKEND_URL="/api"
 # Copy frontend source code
 COPY frontend/ /usr/src/app/
 
 # Install dependencies and build the frontend
 RUN npm ci
-ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
 RUN npm run build
-
 
 # build backend
 FROM eclipse-temurin:17-jdk-alpine as builder
@@ -25,7 +25,6 @@ COPY backend/.mvn/ /usr/src/app/.mvn/
 COPY backend/mvnw /usr/src/app/mvnw
 COPY backend/pom.xml /usr/src/app/
 COPY backend/src /usr/src/app/src
-
 
 COPY --from=client /usr/src/app/dist/ /usr/src/app/src/main/resources/static/
 # Build the backend application

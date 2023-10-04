@@ -2,8 +2,6 @@ version: '3.8'
 
 services:
   backend:
-    environment:
-      - VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }}
     build:
       context: .
       dockerfile: Dockerfile
