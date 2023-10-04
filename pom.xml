@@ -1,0 +1,28 @@
+<build>
+    <plugins>
+        <!-- Copy frontend build output to Spring Boot resources -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.2.0</version> <!-- Use the latest version -->
+            <executions>
+                <execution>
+                    <id>copy-frontend-resources</id>
+                    <phase>compile</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${project.basedir}/backend/src/main/resources/templates/frontend</outputDirectory>
+                        <resources>
+                            <resource>
+                                <directory>${project.basedir}/frontend/dist</directory>
+                                <filtering>false</filtering>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>

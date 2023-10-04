@@ -19,7 +19,7 @@ public class DefaultEndpointTest {
 
     @Test
     public void greetingShouldReturnDefaultMessage() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/se",
                 String.class)).contains("Hello");
     }
 }

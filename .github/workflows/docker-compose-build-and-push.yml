@@ -1,0 +1,28 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main # Adjust to your main branch name
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+      - name: Build Backend Docker image
+        run: docker-compose build backend
+
+      - name: Push Docker image to Docker Hub
+        run: docker-compose push backend
+
+      - name: Push Docker image to Docker Hub
+        run: |
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/music-course:latest ${{ secrets.DOCKERHUB_USERNAME }}:latest
+          docker push music-course:latest
