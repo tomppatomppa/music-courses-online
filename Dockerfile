@@ -8,6 +8,7 @@ COPY frontend/ /usr/src/app/
 
 # Install dependencies and build the frontend
 RUN npm ci
+ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
 RUN npm run build
 
 
