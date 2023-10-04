@@ -3,7 +3,7 @@ name: CI Build and Test Backend
 on:
   push:
     branches:
-      - main
+      - dev
     paths:
       - 'backend/**'
 jobs:
