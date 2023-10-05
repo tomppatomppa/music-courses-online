@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class VideoController {
 
-    @Value("${CLOUD_FRONT_URL:default}")
+    @Value("${CLOUD_FRONT_URL:defaultUrl}")
     private String databaseUrl;
 
 
