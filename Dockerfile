@@ -33,7 +33,6 @@ COPY --from=client /usr/src/app/dist/ /usr/src/app/src/main/resources/static/
 # Build the backend application
 RUN chmod +x mvnw && ./mvnw clean install
 
-
 # Create the final Docker image
 FROM eclipse-temurin:17-jdk-alpine
 
