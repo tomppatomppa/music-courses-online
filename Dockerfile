@@ -9,7 +9,7 @@ ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
 COPY frontend/ /usr/src/app/
 
 # Install dependencies and build the frontend
-RUN npm ci
+RUN npm ci --omit-dev
 RUN npm run build
 
 # build backend
@@ -27,8 +27,8 @@ COPY backend/pom.xml /usr/src/app/
 COPY backend/src /usr/src/app/src
 
 COPY --from=client /usr/src/app/dist/ /usr/src/app/src/main/resources/static/
-# Build the backend application
 
+# Build the backend application
 RUN chmod +x mvnw && ./mvnw clean install
 
 
