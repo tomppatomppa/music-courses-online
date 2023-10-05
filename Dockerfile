@@ -3,8 +3,8 @@ FROM node:16-alpine as client
 
 WORKDIR /usr/src/app
 
-
-ENV VITE_BACKEND_URL="/api"
+ARG VITE_BACKEND_URL
+ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
 # Copy frontend source code
 COPY frontend/ /usr/src/app/
 
