@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class ClientForwardController {
-
-
-
     @GetMapping("/se")
     public String homePage() {
         return "Hello";

@@ -12,8 +12,8 @@ services:
 
     ports:
       - 5173:5173
-    environment:
-      - VITE_BACKEND_URL=http://localhost:8080/api
+    # environment:
+    #   - VITE_BACKEND_URL=http://localhost:8080
 
   server:
     image: server
@@ -21,7 +21,7 @@ services:
       context: backend
       dockerfile: dev.Dockerfile
     ports:
-      - 3000:3000
+      - 8000:8000
     # volumes:
     #   - ./backend/:/usr/src/app
 
