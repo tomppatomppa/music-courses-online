@@ -6,10 +6,12 @@ WORKDIR /usr/src/app
 ARG VITE_BACKEND_URL
 ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
 # Copy frontend source code
-COPY frontend/ /usr/src/app/
-
-# Install dependencies and build the frontend
+COPY frontend/package*.json /usr/src/app/
+# Install dependencies 
 RUN npm ci --omit-dev
+
+COPY frontend/ /usr/src/app/
+# build the frontend
 RUN npm run build
 
 # build backend
