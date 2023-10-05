@@ -1,38 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 import { useQuery } from 'react-query'
 import { pingBackend } from './api/test'
 
+import VideoPlayerWrapper from './components/Videoplayer/Player'
+import { getCloudfrontUrl } from './api/VideoApi'
+
 function App() {
-  const [count, setCount] = useState(0)
   const { data } = useQuery('ping', () => pingBackend())
+  const { data: videoUrl } = useQuery(['video_url'], () => getCloudfrontUrl())
 
   return (
-    <>
-      <div>
-        {`Server response: from /api ${data}`}
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main className="h-screen ">
+      {`Server response: from /api ${data}`}
+      <div className="h-full w-full ">
+        <div className="max-w-4xl mx-auto">
+          <VideoPlayerWrapper videoUrl={videoUrl} />
+        </div>
       </div>
-      <h1>Vite + React ssss</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </main>
   )
 }
 

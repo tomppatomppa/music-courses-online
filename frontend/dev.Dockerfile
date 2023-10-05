@@ -3,6 +3,8 @@ FROM node:16-alpine
 WORKDIR /usr/src/app
 COPY package*.json .
 
+RUN touch tailwind.config.cjs \
+    && touch postcss.config.cjs
 #Temporary fix for local development with the prefix /api/api
 ENV VITE_BACKEND_URL=http://localhost:8080/api/api 
 # Install dependencies without copying the entire node_modules directory
